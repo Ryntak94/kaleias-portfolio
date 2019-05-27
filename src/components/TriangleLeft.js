@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 const TriangleL = styled.img`
   width: 100px;
@@ -12,9 +13,17 @@ class TriangleLeft extends Component {
   constructor(props) {
     super(props);
   }
+  onClickHandler = ({ target }) => {
+    this.props.history.push(`/project/${this.props.id}`);
+  };
   render() {
-    return <TriangleL src="https://placekitten.com/100/100" />;
+    return (
+      <TriangleL
+        onClick={this.onClickHandler}
+        src="https://placekitten.com/100/100"
+      />
+    );
   }
 }
 
-export default TriangleLeft;
+export default withRouter(TriangleLeft);
